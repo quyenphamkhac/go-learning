@@ -5,6 +5,8 @@ import (
 	"go-learning/day_02_variables_values_type/template"
 )
 
+type hotdog int
+
 func main() {
 	var message string
 	var a, b, c int
@@ -26,6 +28,12 @@ func main() {
 	message3 := "Shorthand declare"
 	g, h, j := 4, 5, 6
 	fmt.Println(message3, g, h, j)
+	var customType hotdog
+	customType = 10
+	var myInt int
+	myInt = 111
+	customType = hotdog(myInt)
+	fmt.Println(customType)
 }
 
 func foo() {
