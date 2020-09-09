@@ -6,7 +6,9 @@ import (
 
 func main() {
 	// Array Capacity
-	// array.CapacityShowCase()
-	// array.MakeArrayShowCase()
+	array.CapacityShowCase()
+	array.MakeArrayShowCase()
 	array.CopySliceShowCase()
+	array.ExtendAppendShowCase()
+	array.NilSliceShowCase()
 }
