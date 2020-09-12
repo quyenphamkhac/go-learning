@@ -31,7 +31,7 @@ func Utf8AndStringLiteral() {
 		fmt.Printf("%x ", placeOfInterest[i])
 	}
 	fmt.Printf("\n")
-	const nihongo = "日本語"
+	const nihongo = "日本語aaaaaaaa"
 	for index, runeValue := range nihongo {
 		fmt.Printf("%#U starts at byte position %d\n", runeValue, index)
 	}
