@@ -12,9 +12,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer conn.Close()
-	go mustCopy(os.Stdout, conn)
+	done := make(chan struct{})
+	go func() {
+		_, err := io.Copy(os.Stdout, conn)
+		if err != nil {
+			log.Println(err)
+		}
+		log.Println("Done")
+		done <- struct{}{}
+	}()
 	mustCopy(conn, os.Stdin)
+	conn.Close()
+	<-done
 }
 
 func mustCopy(dst io.Writer, src io.Reader) {
