@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"sort"
 	"text/tabwriter"
@@ -14,6 +15,25 @@ type Track struct {
 	Album  string
 	Year   int
 	Length time.Duration
+}
+
+type Point struct {
+	X float64
+	Y float64
+}
+
+func (p Point) Distance(q Point) float64 {
+	return math.Sqrt(math.Pow(p.X-q.X, 2) + math.Pow(p.Y-q.Y, 2))
+}
+
+type Point2 struct {
+	X2 float64
+	Y2 float64
+}
+
+type CompositePoint struct {
+	Point
+	Point2
 }
 
 var tracks = []*Track{
@@ -87,6 +107,9 @@ func main() {
 	}})
 	//!-customcall
 	printTracks(tracks)
+
+	cp := CompositePoint{Point{1.0, 2.0}, Point2{2.0, 1.0}}
+	fmt.Println(cp.Distance(Point{2.0, 3.0}))
 }
 
 type customSort struct {
